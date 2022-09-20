@@ -1,0 +1,8 @@
+App(
+    appid="hello_rust",
+    name="Hello, Rust",
+    apptype=FlipperAppType.EXTERNAL,
+    entry_point="hello_rust_app",
+    sources=["target/thumbv7em-none-eabihf/release/libhello_rust.a"],
+    fap_category="Misc",
+)
