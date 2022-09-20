@@ -28,9 +28,8 @@ upcoming 0.67 firmware release.
     ```
     ./fbt firmware_hello_rust
     ```
-
-Copy the package from `build/f7-firmware-D/hello_rust.fap` to `apps/Misc`
-on the Flipper Zero's SD-card.
+6. Copy the package from `build/f7-firmware-D/hello_rust.fap` to `apps/Misc`
+on the Flipper Zero's SD-card:
     ```
     ./scripts/storage.py mkdir /ext/apps/Misc
     ./scripts/storage.py send build/f7-firmware-D/hello_rust.fap /ext/apps/Misc/hello_rust.fap
