@@ -20,14 +20,14 @@ fn panic(_panic_info: &PanicInfo<'_>) -> ! {
 }
 
 extern "C" {
-    fn __wrap_printf(fmt: *const u8, ...) -> i32;
+    fn printf(fmt: *const u8, ...) -> i32;
     fn furi_delay_ms(ms: u32);
 }
 
 #[no_mangle]
 pub extern "C" fn hello_rust_app(_p: *mut Foo) -> i32 {
     unsafe {
-        __wrap_printf(b"Hello, Rust! \xF0\x9F\xA6\x80\r\n\0".as_ptr());
+        printf(b"Hello, Rust! \xF0\x9F\xA6\x80\r\n\0".as_ptr());
         furi_delay_ms(1000);
     }
 
