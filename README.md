@@ -18,7 +18,7 @@ upcoming 0.67 firmware release.
     ```
 3. Clone this repository into `applications_user`:
     ```
-    git clone https://github.com/dcoles/flipper-hello-rust.git applications_user/hello_rust
+    git clone https://github.com/dcoles/flipperzero-hello-rust.git applications_user/hello_rust
     ```
 4. Build the project as a Rust library:
     ```
