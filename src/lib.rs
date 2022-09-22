@@ -4,7 +4,14 @@
 #![no_main]
 #![no_std]
 
+use core::fmt::Write;
 use core::panic::PanicInfo;
+use core::time::Duration;
+
+use crate::furi::{Stdout, sleep};
+
+mod furi;
+mod sys;
 
 #[repr(C)]
 pub struct Foo {
@@ -18,17 +25,14 @@ fn panic(_panic_info: &PanicInfo<'_>) -> ! {
     loop {}
 }
 
-extern "C" {
-    fn printf(fmt: *const u8, ...) -> i32;
-    fn furi_delay_ms(ms: u32);
-}
-
 #[no_mangle]
 pub extern "C" fn hello_rust_app(_p: *mut Foo) -> i32 {
-    unsafe {
-        printf(b"Hello, Rust! \xF0\x9F\xA6\x80\r\n\0".as_ptr());
-        furi_delay_ms(1000);
-    }
+    let mut stdout = Stdout;
+
+    write!(&mut stdout, "Hello, Rust! \u{1F980}\r\n").unwrap();
+    stdout.flush().unwrap();
+
+    sleep(Duration::from_secs(1));
 
     0
 }
