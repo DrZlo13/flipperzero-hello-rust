@@ -21,6 +21,13 @@ pub struct Foo {
 
 #[panic_handler]
 fn panic(_panic_info: &PanicInfo<'_>) -> ! {
+    let mut stdout = Stdout;
+
+    write!(&mut stdout, "PANIC!\r\n").unwrap();
+    stdout.flush().unwrap();
+
+    // FIXME: Reading `panic_info` causes a crash
+
     // Halt!
     loop {}
 }
