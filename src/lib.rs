@@ -13,12 +13,6 @@ use crate::furi::{Stdout, sleep};
 mod furi;
 mod sys;
 
-#[repr(C)]
-pub struct Foo {
-    _data: [u8; 0],
-    _marker: core::marker::PhantomData<(*mut u8, core::marker::PhantomPinned)>,
-}
-
 #[panic_handler]
 fn panic(_panic_info: &PanicInfo<'_>) -> ! {
     let mut stdout = Stdout;
@@ -32,8 +26,9 @@ fn panic(_panic_info: &PanicInfo<'_>) -> ! {
     loop {}
 }
 
+/// Application entry point.
 #[no_mangle]
-pub extern "C" fn hello_rust_app(_p: *mut Foo) -> i32 {
+pub extern "C" fn hello_rust_app(_args: *mut u8) -> i32 {
     let mut stdout = Stdout;
 
     write!(&mut stdout, "Hello, Rust! \u{1F980}\r\n").unwrap();
