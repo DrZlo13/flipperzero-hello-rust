@@ -1,0 +1,48 @@
+# Makefile for `cargo make`
+
+[config]
+skip_core_tasks = true
+
+[env]
+NAME = "hello_rust"
+CATEGORY = "Misc"
+
+[tasks.default]
+dependencies = ["build"]
+
+[tasks.build]
+description = "Build application"
+command = "./fbt"
+args = ["firmware_${NAME}"]
+cwd = "../.."
+dependencies = ["build-lib"]
+
+[tasks.build.windows]
+command = "./fbt.cmd"
+
+[tasks.build-lib]
+description = "Build only Rust library"
+command = "cargo"
+args = ["build", "--release"]
+
+[tasks.install]
+description = "Install application on device"
+extend = "python"
+args = ["scripts/storage.py", "send", "build/f7-firmware-D/${NAME}.fap", "/ext/apps/${CATEGORY}/${NAME}.fap"]
+
+[tasks.build-install]
+description = "Build and install application on device"
+dependencies = ["build", "install"]
+
+[tasks.cli]
+description = "Run serial CLI"
+extend = "python"
+args = ["scripts/serial_cli.py"]
+
+[tasks.python]
+description = "Run Python"
+command = "python"
+cwd = "../.."
+
+[tasks.python.windows]
+command = "./toolchain/i686-windows/python/python.exe"
