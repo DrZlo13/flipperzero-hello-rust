@@ -4,5 +4,6 @@ App(
     apptype=FlipperAppType.EXTERNAL,
     entry_point="hello_rust_app",
     sources=["target/thumbv7em-none-eabihf/release/libhello_rust.a"],
+    fap_icon="hello_rust_10px.png",
     fap_category="Misc",
 )
