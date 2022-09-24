@@ -6,6 +6,9 @@ from the SD-card.
 This depends upon the Flipper Application SDK which should be included in the
 upcoming 0.67 firmware release.
 
+**Note:** This currently requires a firmware with patches from my
+[`rust` branch of `flipper-firmware`](https://github.com/dcoles/flipperzero-firmware/tree/rust).
+
 ## Building
 
 1. Install the `thumbv7em-none-eabihf` Rust target:

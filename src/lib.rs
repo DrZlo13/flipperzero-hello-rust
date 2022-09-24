@@ -14,13 +14,11 @@ mod furi;
 mod sys;
 
 #[panic_handler]
-fn panic(_panic_info: &PanicInfo<'_>) -> ! {
+fn panic(panic_info: &PanicInfo<'_>) -> ! {
     let mut stdout = Stdout;
 
-    write!(&mut stdout, "PANIC!\r\n").unwrap();
+    write!(&mut stdout, "PANIC! {panic_info}\r\n").unwrap();
     stdout.flush().unwrap();
-
-    // FIXME: Reading `panic_info` causes a crash
 
     // Halt!
     loop {}
