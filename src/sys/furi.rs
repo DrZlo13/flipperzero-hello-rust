@@ -16,5 +16,6 @@ extern "C" {
     pub fn furi_thread_stdout_flush() -> i32;
     pub fn furi_thread_stdout_write(data: *const u8, size: usize) -> usize;
     pub fn furi_thread_yield();
-    pub fn furi_delay_ms(ms: u32);
+    pub fn furi_delay_ms(msec: u32);
+    pub fn furi_delay_us(usec: u32);
 }
