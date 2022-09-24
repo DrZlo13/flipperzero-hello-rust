@@ -5,24 +5,13 @@
 #![no_std]
 
 use core::fmt::Write;
-use core::panic::PanicInfo;
 use core::time::Duration;
 
 use crate::furi::{Stdout, sleep};
 
 mod furi;
 mod sys;
-
-#[panic_handler]
-fn panic(panic_info: &PanicInfo<'_>) -> ! {
-    let mut stdout = Stdout;
-
-    write!(&mut stdout, "PANIC! {panic_info}\r\n").unwrap();
-    stdout.flush().unwrap();
-
-    // Halt!
-    loop {}
-}
+mod panic_handler;
 
 /// Application entry point.
 #[no_mangle]
