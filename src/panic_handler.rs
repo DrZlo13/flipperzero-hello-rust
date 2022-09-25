@@ -1,11 +1,12 @@
 //! Panic handler for Furi applications.
 //! This will print the panic info to stdout and then trigger a crash.
 
-use core::ffi::{CStr, c_char};
+use core::ffi::CStr;
 use core::fmt::Write;
 use core::panic::PanicInfo;
 use core::str;
 
+use crate::c_string;
 use crate::furi::Stdout;
 use crate::sys::furi;
 
@@ -30,6 +31,6 @@ fn panic(panic_info: &PanicInfo<'_>) -> ! {
 
     unsafe {
         furi::furi_thread_yield(); // Allow console to flush
-        furi::furi_crash("Rust panic\r\n".as_ptr() as *const c_char)
+        furi::furi_crash(c_string!("Rust panic\r\n"))
     }
 }
