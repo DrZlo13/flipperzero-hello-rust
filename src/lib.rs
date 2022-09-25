@@ -21,7 +21,7 @@ pub mod panic_handler;
 /// View draw handler.
 pub extern "C" fn draw_callback(canvas: *mut Canvas, _context: *mut c_void) {
     unsafe {
-        sys::canvas::canvas_draw_str(canvas, 39, 31, c_string!("Hello, Rust!"));
+        sys::canvas::draw_str(canvas, 39, 31, c_string!("Hello, Rust!"));
     }
 }
 
@@ -34,18 +34,18 @@ pub extern "C" fn hello_rust_app(_args: *mut u8) -> i32 {
     stdout.flush().unwrap();
 
     unsafe {
-        let view_port = sys::view_port::view_port_alloc();
-        sys::view_port::view_port_draw_callback_set(view_port, draw_callback, ptr::null_mut());
+        let view_port = sys::view_port::alloc();
+        sys::view_port::draw_callback_set(view_port, draw_callback, ptr::null_mut());
 
-        let gui = sys::furi::furi_record_open(RECORD_GUI) as *mut Gui;
-        sys::gui::gui_add_view_port(gui, view_port, GuiLayer::Fullscreen);
+        let gui = sys::furi::record_open(RECORD_GUI) as *mut Gui;
+        sys::gui::add_view_port(gui, view_port, GuiLayer::Fullscreen);
 
         sleep(Duration::from_secs(1));
 
-        sys::view_port::view_port_enabled_set(view_port, false);
-        sys::gui::gui_remove_view_port(gui, view_port);
-        sys::furi::furi_record_close(RECORD_GUI);
-        sys::view_port::view_port_free(view_port);
+        sys::view_port::enabled_set(view_port, false);
+        sys::gui::remove_view_port(gui, view_port);
+        sys::furi::record_close(RECORD_GUI);
+        sys::view_port::free(view_port);
     }
 
     0

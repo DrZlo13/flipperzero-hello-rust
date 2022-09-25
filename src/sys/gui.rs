@@ -24,6 +24,8 @@ pub enum GuiLayer {
 }
 
 extern "C" {
-    pub fn gui_add_view_port(gui: *mut Gui, view_port: *mut ViewPort, layer: GuiLayer);
-    pub fn gui_remove_view_port(gui: *mut Gui, view_port: *mut ViewPort);
+    #[link_name = "gui_add_view_port"]
+    pub fn add_view_port(gui: *mut Gui, view_port: *mut ViewPort, layer: GuiLayer);
+    #[link_name = "gui_remove_view_port"]
+    pub fn remove_view_port(gui: *mut Gui, view_port: *mut ViewPort);
 }

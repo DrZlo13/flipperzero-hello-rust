@@ -15,8 +15,8 @@ fn panic(panic_info: &PanicInfo<'_>) -> ! {
     let mut stdout = Stdout;
 
     let thread_name = unsafe {
-        let thread_id = furi::furi_thread_get_current_id();
-        let thread_name = furi::furi_thread_get_name(thread_id);
+        let thread_id = furi::thread_get_current_id();
+        let thread_name = furi::thread_get_name(thread_id);
 
         if thread_name.is_null() {
             "<unknown>"
@@ -30,7 +30,7 @@ fn panic(panic_info: &PanicInfo<'_>) -> ! {
     let _ = stdout.flush();
 
     unsafe {
-        furi::furi_thread_yield(); // Allow console to flush
-        furi::furi_crash(c_string!("Rust panic\r\n"))
+        furi::thread_yield(); // Allow console to flush
+        furi::crash(c_string!("Rust panic\r\n"))
     }
 }

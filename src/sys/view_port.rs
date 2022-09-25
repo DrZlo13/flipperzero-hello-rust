@@ -13,10 +13,16 @@ pub type ViewPortDrawCallback = extern fn(*mut Canvas, *mut c_void);
 pub type ViewPortInputCallback = extern fn(*mut InputEvent, *mut c_void);
 
 extern "C" {
-    pub fn view_port_alloc() -> *mut ViewPort;
-    pub fn view_port_free(view_port: *mut ViewPort);
-    pub fn view_port_enabled_set(view_port: *mut ViewPort, enabled: bool);
-    pub fn view_port_draw_callback_set(view_port: *mut ViewPort, callback: ViewPortDrawCallback, context: *mut c_void);
-    pub fn view_port_input_callback_set(view_port: *mut ViewPort, callback: ViewPortInputCallback, context: *mut c_void);
-    pub fn view_port_update(view_port: *mut ViewPort);
+    #[link_name = "view_port_alloc"]
+    pub fn alloc() -> *mut ViewPort;
+    #[link_name = "view_port_free"]
+    pub fn free(view_port: *mut ViewPort);
+    #[link_name = "view_port_enabled_set"]
+    pub fn enabled_set(view_port: *mut ViewPort, enabled: bool);
+    #[link_name = "view_port_draw_callback_set"]
+    pub fn draw_callback_set(view_port: *mut ViewPort, callback: ViewPortDrawCallback, context: *mut c_void);
+    #[link_name = "view_port_input_callback_set"]
+    pub fn input_callback_set(view_port: *mut ViewPort, callback: ViewPortInputCallback, context: *mut c_void);
+    #[link_name = "view_port_update"]
+    pub fn update(view_port: *mut ViewPort);
 }
