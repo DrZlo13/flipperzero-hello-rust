@@ -3,11 +3,9 @@
 This is an example of how to build a Rust-based Flipper application that runs
 from the SD-card.
 
-This depends upon the Flipper Application SDK which should be included in the
-upcoming 0.67 firmware release.
-
-**Note:** This currently requires a firmware with patches from my
-[`rust` branch of `flipper-firmware`](https://github.com/dcoles/flipperzero-firmware/tree/rust).
+**Note:** This depends upon the Flipper Application SDK which is included in
+the `0.67` release and some Rust-specific fixes which are currently only in
+the [`dev` branch](https://github.com/flipperdevices/flipperzero-firmware/tree/dev).
 
 ## Building
 

@@ -9,14 +9,12 @@ use core::fmt::Write;
 use core::ptr;
 use core::time::Duration;
 
-use sys::canvas::Canvas;
-use sys::gui::{RECORD_GUI, Gui, GuiLayer};
-
-use crate::furi::{Stdout, sleep};
-
-pub mod furi;
-pub mod sys;
-pub mod panic_handler;
+extern crate flipperzero;
+use flipperzero::furi::{Stdout, sleep};
+use flipperzero_sys as sys;
+use flipperzero_sys::c_string;
+use flipperzero_sys::canvas::Canvas;
+use flipperzero_sys::gui::{RECORD_GUI, Gui, GuiLayer};
 
 /// View draw handler.
 pub extern "C" fn draw_callback(canvas: *mut Canvas, _context: *mut c_void) {
