@@ -4,18 +4,18 @@ version = 3
 
 [[package]]
 name = "flipperzero"
-version = "0.1.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "82d2635dadb3844b1a53e4066385902beeebf6178ab26fb1f8e9766bdca18b2c"
+checksum = "e5ad1854937579e3d77e154515a17f8f521d050b8fdeb7e021eff0946ff8a55e"
 dependencies = [
  "flipperzero-sys",
 ]
 
 [[package]]
 name = "flipperzero-sys"
-version = "0.1.0"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "53f5bbf6c39fbadcec435acb52d3a8853d1180212639c2a76c433756515c9cdb"
+checksum = "abcfaacfcd0047d7e26c51ddea0b83bfcf83a7f584bf418126d607cd4646ffa7"
 
 [[package]]
 name = "hello_rust"
