@@ -13,7 +13,7 @@ dependencies = ["build"]
 [tasks.build]
 description = "Build application"
 command = "./fbt"
-args = ["firmware_${NAME}"]
+args = ["fap_${NAME}"]
 cwd = "../.."
 dependencies = ["build-lib"]
 
@@ -33,6 +33,13 @@ args = ["scripts/storage.py", "send", "build/f7-firmware-D/${NAME}.fap", "/ext/a
 [tasks.build-install]
 description = "Build and install application on device"
 dependencies = ["build", "install"]
+
+[tasks.build-run]
+description = "Build and run application on device"
+command = "./fbt"
+cwd = "../.."
+dependencies = ["build-lib"]
+args = ["launch_app", "APPSRC=applications_user/${NAME}"]
 
 [tasks.cli]
 description = "Run serial CLI"
