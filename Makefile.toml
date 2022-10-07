@@ -28,7 +28,7 @@ args = ["build", "--release"]
 [tasks.install]
 description = "Install application on device"
 extend = "python"
-args = ["scripts/storage.py", "send", "build/f7-firmware-D/${NAME}.fap", "/ext/apps/${CATEGORY}/${NAME}.fap"]
+args = ["scripts/storage.py", "send", "build/f7-firmware-D/.extapps/${NAME}.fap", "/ext/apps/${CATEGORY}/${NAME}.fap"]
 
 [tasks.build-install]
 description = "Build and install application on device"
