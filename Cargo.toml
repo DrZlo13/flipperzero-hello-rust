@@ -2,6 +2,7 @@
 name = "hello_rust"
 version = "0.1.0"
 edition = "2021"
+rust-version = "1.64.0"
 autobins = false
 autoexamples = false
 autotests = false
