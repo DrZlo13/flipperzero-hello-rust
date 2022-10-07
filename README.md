@@ -8,7 +8,7 @@ the `0.67` release and some Rust-specific fixes which are included in `0.68.1` r
 
 ## Building
 
-1. Switch to nightly version of Rust 
+1. \[Optional\] Switch to nightly version of Rust (required if you use `flipperzero-alloc`)
     ```
     rustup default nightly
     ```
